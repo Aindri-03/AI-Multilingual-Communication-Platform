@@ -132,26 +132,6 @@ streamlit run app.py
 
 ---
 
-# 📷 Screenshots
-
-Add screenshots of:
-
-- Home Page
-- Voice Recording
-- Language Detection
-- Translation Output
-- Audio Playback
-
-Example:
-
-```
-images/home.png
-images/translation.png
-images/audio.png
-```
-
----
-
 # 🔄 Workflow
 
 1. User records speech.
