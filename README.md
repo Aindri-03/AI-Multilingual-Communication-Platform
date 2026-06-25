@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # AI Multilingual Platform
 
 ## Run the app
@@ -31,4 +30,3 @@ cd "c:\Users\KIIT\OneDrive\Desktop\AI Multilingual Platform"
 =======
 # AI-Multilingual-Communication-Platform
 AI-powered multilingual translator with speech recognition, language detection, translation, and text-to-speech.
->>>>>>> 1e73b9eb564d6fe9de962e1c9755797f60889e0a
