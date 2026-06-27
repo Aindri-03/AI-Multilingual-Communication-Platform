@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+tmp_*.py
+output.mp3
+recorded_audio.wav

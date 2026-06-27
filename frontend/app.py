@@ -9,8 +9,14 @@ import streamlit as st
 from backend.translation_service import translate_text
 from backend.tts_service import text_to_speech
 from backend.speech_service import speech_to_text
-from streamlit_mic_recorder import mic_recorder
 from backend.language_service import detect_language
+
+try:
+    from streamlit_mic_recorder import mic_recorder
+    has_mic_recorder = True
+except Exception:
+    mic_recorder = None
+    has_mic_recorder = False
 
 # ---------------- PAGE CONFIG ----------------
 
@@ -74,11 +80,20 @@ if "target_lang" not in st.session_state:
 
 st.subheader("🎤 Voice Input")
 
-audio = mic_recorder(
-    start_prompt="🎤 Start Recording",
-    stop_prompt="⏹ Stop Recording",
-    key="recorder"
-)
+if has_mic_recorder:
+    try:
+        audio = mic_recorder(
+            start_prompt="🎤 Start Recording",
+            stop_prompt="⏹ Stop Recording",
+            key="recorder"
+        )
+    except Exception as recorder_error:
+        st.error("Voice recorder is unavailable right now.")
+        st.write(f"Recorder error: {recorder_error}")
+        audio = None
+else:
+    st.warning("Voice recording is unavailable. Please use text input below.")
+    audio = None
 
 if audio:
 
@@ -160,9 +175,10 @@ if st.button("🔄 Swap Languages"):
 st.subheader("✍ Enter Text")
 
 text = st.text_area(
-    "",
+    "Input Text",
     value=st.session_state.recognized_text,
-    height=150
+    height=150,
+    label_visibility="collapsed"
 )
 
 # ---------------- TRANSLATE ----------------
